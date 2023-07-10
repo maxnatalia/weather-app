@@ -1,13 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
-import { apiKey, weatherApi } from "./apiData";
-import { wait } from "./helpers/helperFunctions";
+import { weatherApi } from "./utilities/apiData";
+import { wait } from "./utilities/helperFunctions";
 
 export const useFetchWeather = (city) => {
 
     const getWeather = async () => {
         await wait(3000);
 
-        const { data } = await weatherApi.get(`?q=${city}&appid=${apiKey}`);
+        const { data } = await weatherApi.get(`?q=${city}&appid=${import.meta.env.VITE_SOME_KEY}`);
         return data;
     };
 
